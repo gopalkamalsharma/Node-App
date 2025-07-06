@@ -23,7 +23,7 @@ pipeline {
                 
                     sh '''
                         echo "Copying build artifacts to EC2"
-                        sudo cp dist/ /var/www/html
+                        sudo cp -S dist/ /var/www/html
                         echo "Restarting web server on EC2"
                         sudo systemctl restart nginx
                     '''
