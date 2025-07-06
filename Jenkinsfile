@@ -24,9 +24,9 @@ pipeline {
                 sshagent(['ec2-ssh-key']) {
                     sh '''
                         echo "Copying build artifacts to EC2"
-                        scp -o StrictHostKeyChecking=no -r dist/ ubuntu@13.232.208.28:/var/www/html
+                        cp -r dist/ /var/www/html
                         echo "Restarting web server on EC2"
-                        ssh -o StrictHostKeyChecking=no ubuntu@13.232.208.28 'sudo systemctl restart nginx'
+                        sudo systemctl restart nginx
                     '''
                 }
                 echo 'Deployment Completed'
