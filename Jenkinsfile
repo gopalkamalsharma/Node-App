@@ -10,6 +10,14 @@ pipeline{
                     echo "Building Completed"
                     ``` 
                     } 
-                } 
+                }
+            stage("Deploy"){
+                steps{
+                    echo "Staring Deployment on EC2"
+                    sh "scp -r -o strictCheckingOfKey=No ./dist/* /home/ubuntu/node-app/"
+                    sh "npm start"
+                    echo "Deployment done"
+                }
+            } 
             } 
         }
