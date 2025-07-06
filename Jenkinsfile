@@ -24,7 +24,7 @@ pipeline {
                 sshagent(['ec2-ssh-key']) {
                     sh '''
                         echo "Copying build artifacts to EC2"
-                        cp -r dist/ /var/www/html
+                        sudo cp -r dist/ /var/www/html
                         echo "Restarting web server on EC2"
                         sudo systemctl restart nginx
                     '''
