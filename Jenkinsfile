@@ -23,7 +23,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Deploying to EC2 at ' + env.EC2_HOST'
+                echo 'Deploying to EC2 at ' + env.EC2_HOST
                 sshagent (credentials: [env.SSH_CREDENTIAL_ID]){
                 sh """
                         echo "Creating remote directory..."
